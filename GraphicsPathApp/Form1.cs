@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace GraphicsPathApp
@@ -10,6 +9,7 @@ namespace GraphicsPathApp
     {
         private readonly List<Point> _points;
         private readonly System.Drawing.Drawing2D.GraphicsPath _path;
+        private readonly List<Rectangle> _rectangles; 
 
         public Form1()
         {
@@ -23,12 +23,17 @@ namespace GraphicsPathApp
             };
 
             _path = new System.Drawing.Drawing2D.GraphicsPath();
+            _rectangles = new List<Rectangle>();
         }
 
         private void btnDrawPath_Click(object sender, EventArgs e)
         {
             //if (_path.PathData.Points.Length == 0)
-                _path.AddPolygon(_points.ToArray());
+            _path.AddPolygon(_points.ToArray());
+
+            _rectangles.Add(new Rectangle(300, 300, 200, 200));
+
+            _path.AddRectangles(_rectangles.ToArray());
 
             Graphics graphics = CreateGraphics();
 
@@ -64,10 +69,23 @@ namespace GraphicsPathApp
             if (_path.IsVisible(e.Location))
             {
                 _path.Reset();
+
+                foreach (Rectangle rectangle in _rectangles)
+                {
+                    if (rectangle.Contains(e.Location))
+                    {
+                        _rectangles.Remove(rectangle);
+                    }
+                    else
+                    {
+                        _path.AddRectangle(rectangle);
+                    }
+                }
+                
                 this.Invalidate();
+
                 //MessageBox.Show("Inside the polygon");
             }
-               
         }
     }
 }
