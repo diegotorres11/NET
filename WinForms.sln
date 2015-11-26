@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarEvents", "CarEvents\CarE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicsPathApp", "GraphicsPathApp\GraphicsPathApp.csproj", "{5C81ADF6-83B7-4E82-A553-A9018035ED4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabelRectangle", "LabelRectangle\LabelRectangle.csproj", "{42E6F71C-FEC2-4EF9-A3EA-F65CB7FA6344}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{5C81ADF6-83B7-4E82-A553-A9018035ED4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C81ADF6-83B7-4E82-A553-A9018035ED4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C81ADF6-83B7-4E82-A553-A9018035ED4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E6F71C-FEC2-4EF9-A3EA-F65CB7FA6344}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E6F71C-FEC2-4EF9-A3EA-F65CB7FA6344}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E6F71C-FEC2-4EF9-A3EA-F65CB7FA6344}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E6F71C-FEC2-4EF9-A3EA-F65CB7FA6344}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
