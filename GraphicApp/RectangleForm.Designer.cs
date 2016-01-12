@@ -1,6 +1,6 @@
 ﻿namespace GraphicApp
 {
-    partial class Form1
+    partial class RectangleForm
     {
         /// <summary>
         /// Required designer variable.

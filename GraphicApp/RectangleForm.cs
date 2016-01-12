@@ -1,21 +1,56 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace GraphicApp
 {
-    public partial class Form1 : Form
+    public partial class RectangleForm : Form
     {
+        #region "Private Instance Variables"
         private Point _startPoint;
         private bool _isDragging;
         private bool _isResizingBottomRight;
         private bool _isResizingTopRight;
+        #endregion
 
-        public Form1()
+        #region "Public Properties"
+        public List<Label> Rectangles { get; private set; }
+        #endregion
+
+        public RectangleForm()
         {
             InitializeComponent();
         }
 
+        #region "Exposed methods"
+        public Label AddRectangle(Rectangle rectangle)
+        {
+            var lblRectangle = new Label()
+            {
+                BorderStyle = BorderStyle.FixedSingle,
+                Location = new Point(rectangle.X, rectangle.Y),
+                Size = new Size(rectangle.Width, rectangle.Height)
+            };
+
+            lblRectangle.MouseDown += label_MouseDown;
+            lblRectangle.MouseMove += label_MouseMove;
+            lblRectangle.MouseUp += label_MouseUp;
+            lblRectangle.MouseLeave += (senderargs, eventargs) => Cursor = Cursors.Default;
+
+            Rectangles.Add(lblRectangle);
+
+            return lblRectangle;
+        }
+
+        public void ClearLabels()
+        {
+            Rectangles = null;
+            Rectangles = new List<Label>();
+        }
+        #endregion
+
+        #region "Events Handlers"
         private void addLabelRectamgleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var lblRectangle = new Label()
@@ -62,9 +97,9 @@ namespace GraphicApp
 
         private void label_MouseMove(object sender, MouseEventArgs e)
         {
-            var label = (Label) sender;
+            var label = (Label)sender;
 
-            if(_isResizingBottomRight)
+            if (_isResizingBottomRight)
             {
                 label.Size = new Size(e.X, e.Y);
             }
@@ -82,7 +117,8 @@ namespace GraphicApp
             {
                 ChangeCursor(label, e.Location);
             }
-        }
+        } 
+        #endregion
 
         private void ChangeCursor(Label label, Point e)
         {
